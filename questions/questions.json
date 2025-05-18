@@ -1,0 +1,1755 @@
+{
+"perguntas": [
+{
+"id": 1,
+"enunciado": "De acordo com as fontes, qual das seguintes não é uma etapa da interação CPU-GPU no pipeline de renderização em tempo real?",
+"alternativas": [
+"Despejar modelos 3D na memória da GPU (primitivas, propriedades de vértice, luzes, etc.)",
+"Configurar sinalizadores de controle da GPU (culling, propriedades de renderização, etc.)",
+"Gerar a textura final da imagem para exibição no monitor",
+"Disparar o processo de renderização da GPU!"
+],
+"respostaCorreta": 2
+},
+{
+"id": 2,
+"enunciado": "No contexto da arquitetura da GPU, as fontes indicam que alguns módulos são fixos e otimizados para computação rápida. Qual exemplo de interpolação é mencionado como implementado em um módulo fixo, não requerendo shaders?",
+"alternativas": [
+"Interpolação Phong",
+"Interpolação Bilinear",
+"Interpolação Trilinear",
+"Interpolação Gourad"
+],
+"respostaCorreta": 3
+},
+{
+"id": 3,
+"enunciado": "Qual das seguintes sequências representa a ordem correta de alguns dos principais passos funcionais sequenciais realizados por uma GPU, de acordo com as fontes?",
+"alternativas": [
+"Model & View Transform, Clipping, Projection, Rasterisation",
+"Vertex Processing, Projection, Clipping, Screen Mapping",
+"Rasterisation, Visibility Test, Vertex Processing, Clipping",
+"Screen Mapping, Rasterisation, Clipping, Projection"
+],
+"respostaCorreta": 0
+},
+{
+"id": 4,
+"enunciado": "A etapa de Clipping no pipeline da GPU tem como objetivo principal, segundo as fontes:",
+"alternativas": [
+"Aplicar sombreamento aos vértices dos triângulos com base em fontes de luz.",
+"Projetar vértices 3D do espaço da câmera para um plano 2D usando uma matriz de projeção.",
+"Reduzir o esforço de computação descartando triângulos que estão fora do volume de visualização (viewing frustum).",
+"Escalar e traduzir os vértices projetados para caber no tamanho e posição desejados da viewport na tela."
+],
+"respostaCorreta": 2
+},
+{
+"id": 5,
+"enunciado": "Na etapa de Rasterização, qual é a primeira ação descrita pelas fontes para um dado triângulo?",
+"alternativas": [
+"Interpolar cores ou normais dos vértices para cada fragmento.",
+"Determinar quais fragmentos são englobados por cada triângulo, dados seus vértices projetados mapeados para a tela.",
+"Comparar a profundidade de cada fragmento com um depth buffer (z-buffer).",
+"Descartar fragmentos que não são visíveis para a câmera."
+],
+"respostaCorreta": 1
+},
+{
+"id": 6,
+"enunciado": "As fontes descrevem duas abordagens de interpolação usadas na rasterização para definir a cor de um fragmento. Qual é a principal diferença entre a interpolação Gourad e a Phong?",
+"alternativas": [
+"Gourad interpola as normais por fragmento, enquanto Phong interpola as cores por fragmento.",
+"Gourad interpola as cores dos vértices, enquanto Phong interpola as normais e posições dos vértices e então computa a equação de sombreamento por fragmento.",
+"Gourad deve ser implementada com shaders, enquanto Phong está disponível no pipeline fixo.",
+"Gourad calcula a iluminação no espaço da tela, enquanto Phong calcula no espaço do mundo."
+],
+"respostaCorreta": 1
+},
+{
+"id": 7,
+"enunciado": "No teste de visibilidade usando z-buffer, como o pipeline determina qual fragmento pinta o pixel correspondente na tela quando fragmentos de vários triângulos se sobrepõem no mesmo local?",
+"alternativas": [
+"O fragmento do primeiro triângulo rasterizado sempre tem prioridade para pintar o pixel.",
+"O fragmento com a menor profundidade (distância da câmera até a posição 3D não projetada do fragmento) será considerado o fragmento não ocluído e pintará o pixel.",
+"O fragmento com a maior profundidade (distância da câmera até a posição 3D não projetada do fragmento) será considerado o fragmento visível e pintará o pixel.",
+"A cor final do pixel é uma combinação ponderada das cores de todos os fragmentos sobrepostos."
+],
+"respostaCorreta": 1
+},
+{
+"id": 8,
+"enunciado": "De acordo com a técnica de Shadow Mapping, como o pipeline determina se um ponto P visível para a câmera V está sombreado pela luz L?",
+"alternativas": [
+"Compara a cor do ponto P na renderização da câmera V com a cor correspondente na renderização da câmera L.",
+"Verifica se o vetor normal da superfície em P aponta diretamente para a posição da luz L.",
+"Compara a distância Zp de P para o plano da câmera L com a distância Zm armazenada no shadow map para a projeção de P (p'). Se Zm < Zp, P está sombreado; se Zm = Zp, P não está sombreado.",
+"Calcula o produto escalar entre o vetor luz e o vetor normal em P; se for negativo, P está sombreado."
+],
+"respostaCorreta": 2
+},
+{
+"id": 9,
+"enunciado": "Qual é o principal objetivo do Environment Mapping (mapeamento de ambiente), de acordo com as fontes, especialmente no que diz respeito à inclusão de fenômenos visuais como reflexos e refrações?",
+"alternativas": [
+"Melhorar a resolução das texturas aplicadas nos objetos.",
+"Construir uma estrutura simples (como um cubo) para ser amostrada como proxy do ambiente, permitindo a simulação de reflexos e refrações.",
+"Otimizar a computação da equação de sombreamento para objetos não reflexivos.",
+"Gerar mapas normais (normal maps) para adicionar detalhes geométricos a superfícies planas."
+],
+"respostaCorreta": 1
+},
+{
+"id": 10,
+"enunciado": "O modelo de Schlick é apresentado nas fontes como uma aproximação para qual conjunto de equações, tornando-o mais rápido de computar e, portanto, mais adequado para renderização em tempo real no contexto de reflexos e refrações?",
+"alternativas": [
+"Lei de Snell",
+"Lei de Beer",
+"Equações de Fresnel",
+"Equações do Modelo de Iluminação Phong"
+],
+"respostaCorreta": 2
+},
+{
+"id": 11,
+"enunciado": "Em qual etapa funcional da GPU ocorre a projeção dos vértices onto o plano da câmera virtual?",
+"alternativas": ["Model & View Transform step", "Screen Mapping step", "Projection step", "Rasterisation step"],
+"respostaCorreta": 2
+},
+{
+"id": 12,
+"enunciado": "De acordo com as fontes, o que é projetado onto o plano da câmera virtual na etapa de projeção?",
+"alternativas": ["Triângulos completos", "Somente vértices de triângulos", "Pixels", "A cena 3D inteira"],
+"respostaCorreta": 1
+},
+{
+"id": 13,
+"enunciado": "Qual a função principal da etapa de 'screen mapping' no pipeline da GPU para renderização em tempo real?",
+"alternativas": ["Remover partes da geometria fora do volume de visão", "Transformar vértices de coordenadas locais para o mundo", "Escalonar e transladar os vértices projetados para o tamanho e posição desejados da viewport na tela", "Determinar quais partes da cena estão visíveis"],
+"respostaCorreta": 2
+},
+{
+"id": 14,
+"enunciado": "Em relação ao tamanho aparente dos objetos com a distância da câmera, qual a principal característica da projeção perspectiva em comparação com a ortográfica?",
+"alternativas": ["A perspectiva faz objetos distantes parecerem maiores, enquanto a ortográfica não", "A ortográfica faz objetos distantes parecerem menores, enquanto a perspectiva não", "A perspectiva faz objetos distantes parecerem menores, enquanto a ortográfica não afeta o tamanho aparente", "Ambos os tipos de projeção fazem objetos distantes parecerem menores da mesma forma"],
+"respostaCorreta": 2
+},
+{
+"id": 15,
+"enunciado": "Qual modelo de projeção é frequentemente utilizado em gráficos em tempo real para simular câmeras reais e o efeito de perspectiva, onde linhas paralelas parecem convergir?",
+"alternativas": ["Pinhole model", "Orthographic projection", "Canonical projection", "Screen mapping"],
+"respostaCorreta": 0
+},
+{
+"id": 16,
+"enunciado": "A utilização de coordenadas homogêneas na formulação matricial do modelo pinhole para projeção perspectiva permite superar qual dificuldade?",
+"alternativas": ["Apenas a translação de pontos", "A rotação de pontos em 3D", "A operação não-linear de divisão por Z, necessária no modelo pinhole", "A aplicação de escalonamento não uniforme"],
+"respostaCorreta": 2
+},
+{
+"id": 17,
+"enunciado": "No modelo pinhole, a projeção de um ponto 3D (X,Y,Z) para um ponto 2D (x,y) é dada por x=nX/Z e y=nY/Z. O que o termo \"divide-by-Z\" (divisão por Z) causa na projeção?",
+"alternativas": ["Faz com que objetos pareçam maiores à medida que a distância |Z| aumenta", "Faz com que objetos pareçam menores à medida que a distância |Z| diminui", "Faz com que objetos pareçam menores à medida que a distância |Z| aumenta", "Não tem efeito no tamanho aparente dos objetos"],
+"respostaCorreta": 2
+},
+{
+"id": 18,
+"enunciado": "Qual é a função da matriz de visão (Mv) no pipeline de renderização, conforme descrito nas fontes?",
+"alternativas": ["Projetar pontos 3D no plano da câmera", "Transformar pontos do sistema de coordenadas local para o sistema de coordenadas do mundo", "Transformar pontos do sistema de coordenadas do mundo para o sistema de coordenadas da câmera", "Mapear pontos projetados para as coordenadas da tela em pixels"],
+"respostaCorreta": 2
+},
+{
+"id": 19,
+"enunciado": "Para a projeção perspectiva completa, transformando um ponto 3D do espaço do mundo para coordenadas homogêneas no espaço da tela, qual é a ordem correta de multiplicação das matrizes, sendo Mo a matriz de transformação ortográfica, Mp a matriz de projeção perspectiva e Mv a matriz de visão?",
+"alternativas": ["Mv * Mp * Mo", "Mo * Mv * Mp", "Mo * Mp * Mv", "Mp * Mv * Mo"],
+"respostaCorreta": 2
+},
+{
+"id": 20,
+"enunciado": "Após aplicar a matriz de projeção perspectiva (Mp) a um ponto 3D (X,Y,Z) e realizar a homogeneização, o valor resultante na coordenada Z (z'/w') representa uma medida de profundidade utilizada principalmente para qual finalidade?",
+"alternativas": ["Determinar a cor final do pixel", "Calcular a posição 2D exata do pixel na tela", "Gerenciar a visibilidade e oclusão de triângulos com o z-buffering", "Aplicar texturas corretamente nos objetos"],
+"respostaCorreta": 2
+},{
+"id": 21,
+"enunciado": "Qual é a definição de Alfabeto de acordo com as fontes?",
+"alternativas": ["Um conjunto de palavras formadas por símbolos.", "Um conjunto finito e não vazio de símbolos.", "Uma sequência finita de símbolos.", "O símbolo inicial de uma gramática."],
+"respostaCorreta": 1
+},
+{
+"id": 22,
+"enunciado": "Segundo as fontes, o que define uma Palavra sobre um Alfabeto?",
+"alternativas": ["Um conjunto de palavras.", "O símbolo inicial de uma derivação.", "Uma sequência finita de símbolos de um alfabeto.", "O conjunto de regras de produção."],
+"respostaCorreta": 2
+},
+{
+"id": 23,
+"enunciado": "Qual dos seguintes métodos para gerar palavras de uma linguagem NÃO foi listado nas fontes?",
+"alternativas": ["Máquina de Turing.", "Expressões Regulares.", "Redes Neurais.", "Gramática Livre de Contexto."],
+"respostaCorreta": 2
+},
+{
+"id": 24,
+"enunciado": "Uma Gramática, 𝐺, é tipicamente composta por um tripleto (𝐴, 𝑆, 𝑃). O que representam 𝐴, 𝑆 e 𝑃, respetivamente?",
+"alternativas": ["Alfabeto, Símbolo Inicial, Conjunto de Regras de Produção.", "Axioma, Símbolo de Derivação, Probabilidades.", "Cabeça da Regra, Corpo da Regra, Símbolos Paramétricos.", "Alfabeto, Conjunto de Símbolos, Palavra."],
+"respostaCorreta": 0
+},
+{
+"id": 25,
+"enunciado": "Qual é a principal característica que distingue o processo de derivação num L-System de uma Gramática padrão, de acordo com as fontes?",
+"alternativas": ["L-Systems só usam gramáticas livres de contexto.", "L-Systems aplicam todas as regras de produção simultaneamente em cada passo de derivação.", "L-Systems permitem que a cabeça de uma regra tenha múltiplos símbolos.", "L-Systems não usam um símbolo inicial."],
+"respostaCorreta": 1
+},
+{
+"id": 26,
+"enunciado": "Numa Gramática, se em um passo de derivação, apenas uma regra é aplicada de cada vez e todas as cabeças das regras são compostas por um único símbolo, que tipo de gramática é essa?",
+"alternativas": ["Gramática Sensível ao Contexto.", "Gramática Livre de Contexto.", "L-System Livre de Contexto (OL-system).", "L-System Sensível ao Contexto (IL-system)."],
+"respostaCorreta": 1
+},
+{
+"id": 27,
+"enunciado": "No contexto da geração de objetos gráficos 2D usando L-Systems e a interpretação da tartaruga, o que representa o símbolo 'F'?",
+"alternativas": ["Mover para a frente sem desenhar uma linha.", "Mudar a orientação no sentido horário.", "Mover para a frente e desenhar uma linha.", "Mudar a orientação no sentido anti-horário."],
+"respostaCorreta": 2
+},
+{
+"id": 28,
+"enunciado": "Como é implementada a capacidade de ramificação ao gerar objetos gráficos (como plantas) com L-Systems, de acordo com as fontes?",
+"alternativas": ["Usando símbolos paramétricos para definir novos pontos de início.", "Aplicando regras de produção estocásticas.", "Utilizando uma fila LIFO (stack) para guardar e restaurar o estado da tartaruga.", "Introduzindo novas regras de produção com múltiplos símbolos na cabeça."],
+"respostaCorreta": 2
+},
+{
+"id": 29,
+"enunciado": "Ao modelar em 3D com L-Systems, como é representada a orientação da tartaruga?",
+"alternativas": ["Por um único ângulo de orientação.", "Por três vetores: heading, left, e up.", "Por uma posição (x, y, z) no espaço 3D.", "Por uma sequência de símbolos de rotação."],
+"respostaCorreta": 1
+},
+{
+"id": 30,
+"enunciado": "O que caracteriza um L-System Estocástico?",
+"alternativas": ["A aplicação sequencial das regras de produção.", "A utilização de símbolos paramétricos.", "Regras de produção com probabilidades ou pesos associados.", "O uso de uma pilha (LIFO) para salvar o estado da tartaruga."],
+"respostaCorreta": 2
+},{
+      "id": 31,
+      "enunciado": "Qual é uma diferença fundamental entre ray tracing e a abordagem de matrizes de projeção + rasterização + heurísticas para renderizar imagens?",
+      "alternativas": ["Ray tracing é usado principalmente para renderização em tempo real." , "Ray tracing oferece um nível mais alto de foto-realismo." , "Ray tracing simula o transporte de luz da câmera para o ambiente." , "Ray tracing é computacionalmente menos dispendioso." ],
+      "respostaCorreta": 1
+    },
+    {
+      "id": 32,
+      "enunciado": "De acordo com a fonte, por que ray tracing é usado principalmente para renderização off-line?",
+      "alternativas": ["Não consegue lidar com cenas 3D complexas." , "Não considera iluminação indireta." , "Simular o transporte de luz é computacionalmente dispendioso." , "Produz imagens que são \"demasiado limpas\"."],
+      "respostaCorreta": 2
+    },
+    {
+      "id": 33,
+      "enunciado": "Qual é a ideia simplificadora central por trás do Whitted Ray Tracing em relação à simulação do fluxo de luz?",
+      "alternativas": ["Simula a luz fluindo da fonte de luz para a câmera." , "Simula a luz fluindo da câmera para o ambiente." , "Considera apenas a iluminação direta das fontes de luz." , "Usa métodos estocásticos para amostrar raios de luz."],
+      "respostaCorreta": 1
+    },
+    {
+      "id": 34,
+      "enunciado": "No Whitted Ray Tracing, o que acontece tipicamente após lançar um raio primário através de um pixel e encontrar o ponto de interseção mais próximo?",
+      "alternativas": ["Um raio secundário de refração é lançado.", "A profundidade da recursão é verificada." , "A equação de sombreamento para o ponto de acerto é calculada." , "Um raio de sombra é lançado na direção da fonte de luz." ],
+      "respostaCorreta": 2
+    },
+    {
+      "id": 35,
+      "enunciado": "Qual dos seguintes efeitos pode ser implementado no Whitted Ray Tracing lançando raios secundários de reflexão?",
+      "alternativas": ["Sombras suaves." , "Profundidade de campo." , "Espelhos." , "Desfoque de movimento (motion blur)." ],
+      "respostaCorreta": 2
+    },
+    {
+      "id": 36,
+    "enunciado": "No pseudo-código do Whitted Ray Tracing apresentado abaixo, como os espelhos imperfeitos (superfícies refletoras não perfeitas) são tipicamente tratados na função `raycolor`?\n\n```\nColor raycolor(Ray d){\n  Point p = hit(d);\n  if p == null (no surface was hit)\n    return Color(0,0,0);\n  Color c = shading(p);\n  if p is on a reflective surface{\n    Ray r = reflection(d, p);\n    c = (1-cs)*c + cs*raycolor(r);\n  }else if p is on a refractive surface{\n    Ray r = reflection(d, p);\n    Ray t = refraction(d, p);\n    double re = energy_ratio(d, p);\n    c = (1-cs)*c + cs*(re*raycolor(r)+(1-re)*raycolor(t));\n  }\n  return c;\n}\n```",
+      "alternativas": ["Calculando apenas a equação de sombreamento no ponto de interseção." , "Lançando um raio de refração em vez de um raio de reflexão." , "Misturando a cor do raio secundário com a cor calculada pela equação de sombreamento para o ponto na superfície." , "Aumentando o número de \"saltos\" recursivos." ],
+      "respostaCorreta": 2
+    },
+    {
+      "id": 37,
+      "enunciado": "Para que é usado o Random Stratified Sampling no contexto do ray tracing?",
+      "alternativas": ["Para simular sombras suaves de luzes de área." , "Para implementar efeitos de profundidade de campo." , "Para evitar Padrões de Moiré ao realizar anti-aliasing." , "Para simular reflexos brilhantes (glossy reflections)." ],
+      "respostaCorreta": 2
+    },
+    {
+      "id": 38,
+      "enunciado": "Como o ray tracing tipicamente implementa sombras suaves de luzes de área?",
+      "alternativas": ["Usando mapas de sombra." , "Lançando múltiplos raios de sombra do ponto na superfície em direção à área de luz e calculando a média do resultado." , "Desfocando as sombras duras geradas por luzes pontuais." , "Usando a equação de sombreamento apenas com um termo ambiente." ],
+      "respostaCorreta": 1
+    },
+    {
+      "id": 39,
+      "enunciado": "Para simular profundidade de campo em ray tracing, os raios são lançados de posições aleatórias ao redor do olho e passam por qual ponto específico?",
+      "alternativas": ["O ponto de interseção mais próximo com a geometria." , "Um ponto aleatório no plano da imagem." , "A posição da fonte de luz." , "O ponto focal no plano focal." ],
+      "respostaCorreta": 3
+    },
+    {
+      "id": 40,
+      "enunciado": "Qual esquema de aceleração organiza caixas delimitadoras (bounding boxes) em uma hierarquia e verifica recursivamente as interseções para acelerar os testes raio-objeto?",
+      "alternativas": ["Subdivisão espacial regular.", "Random stratified sampling." , "Hierarquias de Volume Delimitador (BVH)." , "Distributed ray tracing." ],
+      "respostaCorreta": 2
+    },
+    {
+      "id": 41,
+      "enunciado": "De acordo com as fontes, a interação entre a CPU e a GPU no pipeline de renderização em tempo real envolve várias etapas. Qual das seguintes ações é realizada pela CPU?",
+      "alternativas": [
+        "Executar o teste de visibilidade / display step",
+        "Disparar o processo de rasterização",
+        "Realizar o vertex processing step",
+        "Configurar sinalizadores de controle da GPU"
+      ],
+      "respostaCorreta": 3
+},
+{
+"id": 42,
+"enunciado": "Dentro da GPU, como os dados fluem e como os passos funcionais são implementados?",
+"alternativas": [
+"Os dados fluem através de passos paralelos implementados por módulos sequenciais.",
+"Os dados fluem através de passos sequenciais implementados por módulos que rodam massivamente em paralelo.",
+"Os dados fluem através de passos aleatórios implementados por módulos fixos.",
+"Os dados fluem através de passos programáveis implementados por um único core."
+],
+"respostaCorreta": 1
+},
+{
+"id": 43,
+"enunciado": "As fontes mencionam que alguns módulos na GPU são fixos e otimizados para computação rápida, enquanto outros são programáveis (shaders). Qual tipo de interpolação é mencionado como implementado em módulos fixos?",
+"alternativas": [
+"Interpolação Bilinear",
+"Interpolação Trilinear",
+"Interpolação Phong",
+"Interpolação Gourad"
+],
+"respostaCorreta": 3
+},
+{
+"id": 44,
+"enunciado": "Qual é o objetivo principal do 'Vertex Processing Step' no pipeline funcional da GPU?",
+"alternativas": [
+"Determinar quais fragmentos pertencem a cada triângulo.",
+"Aplicar transformações de modelo e vista aos vértices.",
+"Descartar triângulos fora do volume de visualização.",
+"Realizar operações por vértice, como cálculo da equação de sombreamento (se usando Gourad)."
+],
+"respostaCorreta": 3
+},
+{
+"id": 45,
+"enunciado": "Após a etapa de Clipping e antes da Rasterização, o 'Screen Mapping Step' é executado. Qual é a sua função?",
+"alternativas": [
+"Projetar vértices 3D para o plano da câmera.",
+"Escalar e transladar os vértices projetados para caber na viewport da tela.",
+"Computar as coordenadas baricêntricas dos fragmentos.",
+"Realizar testes de visibilidade baseados na profundidade."
+],
+"respostaCorreta": 1
+},
+{
+"id": 46,
+"enunciado": "Na etapa de Rasterização, o que são considerados 'fragmentos' e como eles se relacionam com os pixels da tela?",
+"alternativas": [
+"Fragmentos são os vértices 3D de um triângulo, e cada pixel corresponde a um vértice.",
+"Fragmentos são sub-regiões de shaders, e um pixel combina vários fragmentos.",
+"Um fragmento pertence a um triângulo e corresponde a uma área de pixel na tela; pode haver muitos fragmentos por pixel, competindo para pintá-lo.",
+"Fragmentos são texturas aplicadas a triângulos, e cada pixel mostra uma única textura."
+],
+"respostaCorreta": 2
+},
+{
+"id": 47,
+"enunciado": "Ao determinar se um fragmento está dentro de um triângulo projetado em 2D durante a rasterização, as fontes descrevem um método usando coordenadas baricêntricas. Qual condição das coordenadas baricêntricas indica que o ponto está DENTRO do triângulo?",
+"alternativas": [
+"As três coordenadas são maiores que 1.",
+"Uma das coordenadas é 1 e as outras são 0.",
+"As três coordenadas são menores que 0.",
+"As três coordenadas estão entre 0 e 1 (inclusive nos limites)."
+],
+"respostaCorreta": 3
+},
+{
+"id": 48,
+"enunciado": "As fontes descrevem a interpolação Gourad e Phong usadas na rasterização. Qual afirmação é correta sobre a interpolação Gourad?",
+"alternativas": [
+"Interpola normais e posições e computa sombreamento por fragmento.",
+"Deve ser implementada usando shaders.",
+"Interpola as cores dos vértices (cores calculadas no vertex processing step).",
+"Não está disponível no pipeline fixo."
+],
+"respostaCorreta": 2
+},
+{
+"id": 49,
+"enunciado": "Qual é o principal mecanismo utilizado no 'Visibility Test / Display Step' para determinar qual fragmento de vários triângulos sobrepostos pinta um determinado pixel?",
+"alternativas": [
+"A cor do fragmento do último triângulo rasterizado é sempre usada.",
+"Um teste de profundidade (z-buffer) é realizado, onde o fragmento com a menor profundidade 'vence'.",
+"A cor final é uma média das cores de todos os fragmentos sobrepostos.",
+"Um teste de visibilidade baseado na área do fragmento é realizado."
+],
+"respostaCorreta": 1
+},
+{
+"id": 50,
+"enunciado": "Durante o teste de visibilidade com z-buffer, se a profundidade de um novo fragmento rasterizado for maior que a profundidade armazenada no z-buffer para o pixel correspondente, o que acontece de acordo com as fontes?",
+"alternativas": [
+"A cor do pixel e o z-buffer são atualizados com os valores do novo fragmento.",
+"A cor do pixel é atualizada, mas o z-buffer não.",
+"Nem a cor do pixel nem o z-buffer são atualizados.",
+"O fragmento é descartado, e o processo de rasterização é reiniciado para o triângulo."
+],
+"respostaCorreta": 2
+},
+{
+"id": 51,
+"enunciado": "O processo de rasterização, por sua natureza de amostragem, gera 'aliasing'. O que é o aliasing neste contexto?",
+"alternativas": [
+"A superposição de vários fragmentos no mesmo pixel.",
+"A distorção resultante da amostragem de um triângulo contínuo.",
+"A dificuldade em calcular as coordenadas baricêntricas.",
+"O descarte incorreto de triângulos no clipping step."
+],
+"respostaCorreta": 1
+},
+{
+"id": 52,
+"enunciado": "Uma solução simples para o problema de aliasing mencionada nas fontes é o uso de um 'box filter'. Como um box filter suaviza a imagem?",
+"alternativas": [
+"Calculando a média da intensidade dos pixels vizinhos para definir a intensidade do pixel final.",
+"Descartando pixels cuja cor difere significativamente de seus vizinhos.",
+"Aplicando uma textura de alta resolução sobre a imagem aliada.",
+"Adicionando ruído aleatório para mascarar as bordas serrilhadas."
+],
+"respostaCorreta": 0
+},
+{
+"id": 53,
+"enunciado": "A técnica 'Shadow Mapping' é descrita para adicionar sombras em tempo real. Qual é a intuição principal por trás dessa técnica, envolvendo a câmera V (observador) e a câmera L (na posição da luz)?",
+"alternativas": [
+"Comparar as imagens renderizadas pela câmera V e L diretamente.",
+"Verificar se um ponto P visível para V também está visível para L; se não estiver, está sombreado.",
+"Calcular a distância de cada ponto para a câmera V e usar essa informação para determinar a sombra.",
+"Criar um mapa de cores da perspectiva da luz para subtrair da imagem final."
+],
+"respostaCorreta": 1
+},
+{
+"id": 54,
+"enunciado": "No Shadow Mapping, o que o 'shadow map' armazena?",
+"alternativas": [
+"A cor média dos pixels visíveis para a luz.",
+"A resolução de renderização da câmera L.",
+"A distância do plano de imagem da câmera L para a superfície visível em cada pixel da imagem de L.",
+"O vetor normal das superfícies visíveis para a luz."
+],
+"respostaCorreta": 2
+},
+{
+"id": 55,
+"enunciado": "Para determinar se um ponto P visível para a câmera V está sombreado usando Shadow Mapping, compara-se a distância Zp (distância de P para o plano de L) com Zm (distância armazenada no shadow map para a projeção de P, p'). De acordo com as fontes, quando P é considerado sombreado?",
+"alternativas": [
+"Se Zp < Zm.",
+"Se Zp > Zm.",
+"Se Zp = Zm.",
+"Se Zp + Zm for maior que um limiar."
+],
+"respostaCorreta": 1
+},
+{
+"id": 56,
+"enunciado": "Qual é a desvantagem de usar um shadow map com baixa resolução?",
+"alternativas": [
+"A renderização se torna mais lenta.",
+"As sombras terão maior qualidade e suavidade.",
+"Ocorre forte aliasing nas sombras, resultando em baixa qualidade visual.",
+"A técnica de Shadow Mapping não funciona com baixas resoluções."
+],
+"respostaCorreta": 2
+},
+{
+"id": 57,
+"enunciado": "A técnica de 'Environment Mapping' (mapeamento de ambiente) é apresentada como uma solução eficaz para incluir fenômenos como reflexos e refrações em tempo real. Qual é a abordagem principal do 'Cube Mapping', uma solução comum de Environment Mapping?",
+"alternativas": [
+"Testar interseções de raios de luz com toda a geometria do ambiente.",
+"Criar uma estrutura simples (um cubo imaginário) centrada em uma localização chave, cujas faces são texturizadas com imagens renderizadas da perspectiva dessa localização, servindo como proxy do ambiente.",
+"Aplicar shaders complexos em cada superfície reflexiva/refrativa.",
+"Calcular a equação de sombreamento para cada pixel levando em conta todas as fontes de luz globais."
+],
+"respostaCorreta": 1
+},
+{
+"id": 58,
+"enunciado": "No contexto do Environment Mapping, especialmente Cube Mapping, o que são 'reflection probes'?",
+"alternativas": [
+"Objetos que detectam a presença de luz no ambiente.",
+"Câmeras especiais usadas para capturar a geometria do ambiente.",
+"Cubos texturizados (como descrito no cube mapping) usados especificamente para simular reflexos.",
+"Pontos na geometria de um objeto onde a reflexão é calculada."
+],
+"respostaCorreta": 2
+},
+{
+"id": 59,
+"enunciado": "Qual lei física é mencionada nas fontes como base para a implementação de funcionalidades de reflexão e refração quando a luz atravessa a interface entre dois meios com diferentes índices refrativos?",
+"alternativas": [
+"Lei de Newton",
+"Lei de Coulomb",
+"Lei de Snell",
+"Lei de Hooke"
+],
+"respostaCorreta": 2
+},
+{
+"id": 60,
+"enunciado": "As 'Fresnel Equations' (Equações de Fresnel) permitem determinar a fração da luz incidente que é refletida em função do ângulo de incidência. Qual modelo é apresentado nas fontes como uma aproximação a essas equações, sendo mais rápido para computação em tempo real?",
+"alternativas": [
+"Modelo de Gourad",
+"Modelo de Phong",
+"Modelo de Schlick",
+"Modelo de Beer"
+],
+"respostaCorreta": 2
+},
+{
+"id": 61,
+"enunciado": "Na pipeline funcional da GPU para renderização em tempo real, qual etapa é responsável por processar os vértices dos triângulos?",
+"alternativas": ["Screen mapping step", "Vertex processing step", "Rasterisation step", "Clipping step"],
+"respostaCorreta": 1
+},
+{
+"id": 62,
+"enunciado": "De acordo com as fontes, o que é a principal função da etapa de 'clipping' na pipeline da GPU?",
+"alternativas": ["Transformar vértices para coordenadas da câmera", "Remover partes da geometria que estão fora do volume de visão (view frustum)", "Escalonar vértices para o tamanho da tela", "Aplicar texturas aos triângulos"],
+"respostaCorreta": 1
+},
+{
+"id": 63,
+"enunciado": "Considerando as etapas funcionais da GPU mencionadas nas fontes, qual etapa geralmente precede a rasterização?",
+"alternativas": ["Model & View Transform step", "Visibility test / display step", "Projection step", "Screen mapping step"],
+"respostaCorreta": 3
+},
+{
+"id": 64,
+"enunciado": "A primeira parte da etapa 'model & view transform step' envolve a transformação dos vértices dos triângulos de coordenadas locais para quais coordenadas?",
+"alternativas": ["Coordenadas da câmera", "Coordenadas da tela", "Coordenadas canônicas", "Coordenadas do mundo"],
+"respostaCorreta": 3
+},
+{
+"id": 65,
+"enunciado": "Após transformar para coordenadas do mundo, a segunda parte da etapa 'model & view transform step' transforma os vértices para quais coordenadas?",
+"alternativas": ["Coordenadas da câmera", "Coordenadas locais", "Coordenadas da tela", "Coordenadas canônicas"],
+"respostaCorreta": 0
+},
+{
+"id": 66,
+"enunciado": "Qual é a principal utilidade da geometria projetiva em gráficos 3D, conforme descrito nas fontes?",
+"alternativas": ["Calcular a iluminação de objetos", "Determinar como objetos 3D são representados em imagens 2D, dada a câmera", "Definir a cor final dos pixels", "Realizar testes de visibilidade"],
+"respostaCorreta": 1
+},
+{
+"id": 67,
+"enunciado": "Qual o efeito da projeção perspectiva em linhas paralelas no mundo 3D, em comparação com a projeção ortográfica?",
+"alternativas": ["Perspectiva as mantém paralelas, ortográfica as projeta como linhas de fuga.", "Ortográfica as mantém paralelas, perspectiva as projeta como linhas de fuga.", "Ambas as projetam como linhas de fuga.", "Ambas as mantêm paralelas."],
+"respostaCorreta": 1
+},
+{
+"id": 68,
+"enunciado": "Na projeção perspectiva, o que causa a diminuição do tamanho aparente dos objetos à medida que se afastam da câmera?",
+"alternativas": ["A etapa de screen mapping.", "As linhas de projeção convergindo no centro da câmera e a operação 'divide-by-Z'.", "A matriz de visão.", "A transformação para coordenadas canônicas."],
+"respostaCorreta": 1
+},
+{
+"id": 69,
+"enunciado": "Em contraste com a perspectiva, como a projeção ortográfica afeta o tamanho aparente dos objetos com base em sua distância da câmera?",
+"alternativas": ["Objetos distantes parecem menores.", "Objetos distantes parecem maiores.", "O tamanho aparente não é afetado pela distância.", "O tamanho aparente aumenta e diminui de forma não linear."],
+"respostaCorreta": 2
+},
+{
+"id": 70,
+"enunciado": "No pipeline de renderização em tempo real, o volume ortográfico (view frustum) é transformado para qual volume padronizado?",
+"alternativas": ["Volume do mundo [l,r]x[b,t]x[n,f]", "Volume da tela [0,nx]x[0,ny]", "Volume canônico [-1,1]x[-1,1]x[-1,1]", "Volume da câmera"],
+"respostaCorreta": 2
+},
+{
+"id": 71,
+"enunciado": "A transformação do volume ortográfico para o volume canônico é realizada por quais operações em sequência?",
+"alternativas": ["Escalonamento e depois translação.", "Translação para a origem e depois escalonamento.", "Rotação e depois translação.", "Apenas translação."],
+"respostaCorreta": 1
+},
+{
+"id": 72,
+"enunciado": "O que a 'tela canônica' representa após forçar a coordenada Z de todos os pontos no volume canônico a ser -1?",
+"alternativas": ["A imagem final renderizada na tela.", "Um quadrilátero [-1,1]x[-1,1] que representa a cena vista ortograficamente.", "O volume de visão antes do clipping.", "A matriz de projeção."],
+"respostaCorreta": 1
+},
+{
+"id": 73,
+"enunciado": "Após a projeção na tela canônica [-1,1]x[-1,1], quais transformações são aplicadas para mapear a imagem para a viewport real da tela (nx x ny)?",
+"alternativas": ["Translação seguida de escalonamento.", "Escalonamento seguido de translação.", "Rotação seguida de escalonamento.", "Apenas escalonamento."],
+"respostaCorreta": 1
+},
+{
+"id": 74,
+"enunciado": "O modelo 'pinhole' de câmera, comumente usado em gráficos em tempo real, assume que a luz atinge o plano da imagem através de quê?",
+"alternativas": ["Uma lente complexa.", "Um buraco muito pequeno.", "Múltiplas aberturas.", "Difração."],
+"respostaCorreta": 1
+},
+{
+"id": 75,
+"enunciado": "No modelo pinhole, a imagem é projetada em um plano localizado em Z=n. O valor absoluto de 'n' (|n|) corresponde a qual propriedade da câmera?",
+"alternativas": ["O campo de visão.", "A razão de aspecto.", "A distância focal.", "A posição do centro da câmera."],
+"respostaCorreta": 2
+},
+{
+"id": 76,
+"enunciado": "Para implementar a operação 'divide-by-Z' do modelo pinhole usando operações matriciais lineares e coordenadas homogêneas, em qual etapa a divisão não-linear por Z é realmente realizada?",
+"alternativas": ["Durante a multiplicação da matriz de projeção.", "Quando o ponto homogêneo é transformado de volta para coordenadas cartesianas (homogeneização).", "Na etapa de model transform.", "Na etapa de view transform."],
+"respostaCorreta": 1
+},
+{
+"id": 77,
+"enunciado": "Como diferentes pontos homogêneos podem representar o mesmo ponto cartesiano?",
+"alternativas": ["Tendo as mesmas três primeiras coordenadas, mas a quarta coordenada igual a zero.", "Tendo as mesmas três primeiras coordenadas, mas a quarta coordenada diferente de zero.", "Sendo versões escalonadas (quarta coordenada diferente) do mesmo ponto com a quarta coordenada igual a 1.", "Apenas um ponto homogêneo pode representar um ponto cartesiano."],
+"respostaCorreta": 2
+},
+{
+"id": 78,
+"enunciado": "Após aplicar a matriz de projeção perspectiva (Mp) e homogeneizar, a coordenada Z resultante (z'/w') é utilizada principalmente para qual finalidade?",
+"alternativas": ["Determinar a cor do pixel.", "Calcular as coordenadas x e y do pixel na tela.", "Gerenciar a ordem de desenho e oclusão dos triângulos usando o z-buffering.", "Aplicar efeitos de iluminação."],
+"respostaCorreta": 2
+},
+{
+"id": 79,
+"enunciado": "Antes que o modelo pinhole possa ser aplicado a pontos 3D definidos no espaço do mundo, esses pontos devem ser transformados para qual sistema de coordenadas?",
+"alternativas": ["Sistema de coordenadas da tela.", "Sistema de coordenadas local.", "Sistema de coordenadas da câmera.", "Sistema de coordenadas canônico."],
+"respostaCorreta": 2
+},
+{
+"id": 80,
+"enunciado": "Qual matriz é responsável por transformar pontos do sistema de coordenadas do mundo para o sistema de coordenadas da câmera?",
+"alternativas": ["Matriz de Projeção (Mp).", "Matriz de Modelo (Mm).", "Matriz de Visão (Mv).", "Matriz Ortográfica (Mo)."],
+"respostaCorreta": 2
+},
+
+{
+"id": 81,
+"enunciado": "De acordo com as fontes, qual é a representação usual para a palavra vazia (sem símbolos)?",
+"alternativas": ["epsilon", "lambda", "_", "vazio"],
+"respostaCorreta": 2
+},
+{
+"id": 82,
+"enunciado": "Que propriedade um Alfabeto deve usualmente possuir, de acordo com as definições apresentadas?",
+"alternativas": ["Ser infinito.", "Conter apenas letras minúsculas.", "Ser finito e não vazio.", "Conter pelo menos um número."],
+"respostaCorreta": 2
+},
+{
+"id": 83,
+"enunciado": "Como é definida uma Linguagem sobre um Alfabeto?",
+"alternativas": ["Um conjunto finito e não vazio de símbolos.", "Uma sequência finita de símbolos.", "Um conjunto de palavras sobre um alfabeto.", "O símbolo inicial de uma derivação."],
+"respostaCorreta": 2
+},
+{
+"id": 84,
+"enunciado": "De acordo com as fontes, qual método para geração ou verificação de palavras de uma linguagem é descrito como útil para encontrar padrões em texto?",
+"alternativas": ["Máquina de Turing.", "Gramática Livre de Contexto.", "Expressões Regulares.", "Autómato Finito Não-Determinístico."],
+"respostaCorreta": 2
+},
+{
+"id": 85,
+"enunciado": "Qual método para geração ou verificação de palavras de uma linguagem é descrito como útil para 'Parsing' de um programa de computador?",
+"alternativas": ["Autómato Finito Determinístico.", "Autómato com Pilha (Pushdown Automata).", "Gramática Sensível ao Contexto.", "L-System."],
+"respostaCorreta": 1
+},
+{
+"id": 86,
+"enunciado": "Numa regra de produção de uma Gramática padrão, $H \\rightarrow B$, onde H é a cabeça e B é o corpo, o que pode ser dito sobre o corpo (B)?",
+"alternativas": ["Não pode ser vazio.", "Deve conter pelo menos um símbolo terminal.", "Pode ser vazio.", "Deve conter pelo menos um símbolo não-terminal."],
+"respostaCorreta": 2
+},
+{
+"id": 87,
+"enunciado": "Num passo de derivação de uma Gramática padrão (não L-System), quantas regras de produção são tipicamente aplicadas de cada vez?",
+"alternativas": ["Todas as regras aplicáveis simultaneamente.", "Apenas uma regra de cada vez.", "Pelo menos duas regras.", "Um número de regras igual ao comprimento da palavra atual."],
+"respostaCorreta": 1
+},
+{
+"id": 88,
+"enunciado": "Que tipo de Gramática é classificada como tal se, num passo de derivação, apenas uma regra é aplicada de cada vez, e pelo menos uma cabeça de regra possui dois ou mais símbolos?",
+"alternativas": ["Gramática Livre de Contexto.", "Gramática Sensível ao Contexto.", "L-System Livre de Contexto (OL-system).", "L-System Sensível ao Contexto (IL-system)."],
+"respostaCorreta": 1
+},
+{
+"id": 89,
+"enunciado": "Na definição de um L-System, $(A, S, P)$, o que representa o componente S?",
+"alternativas": ["O Alfabeto.", "Um símbolo inicial único.", "Um conjunto de regras de produção.", "Uma palavra não vazia feita de símbolos do alfabeto."],
+"respostaCorreta": 3
+},
+{
+"id": 90,
+"enunciado": "Num L-System, se um símbolo 'a' na palavra atual não tiver uma regra de produção correspondente na lista P, o que se assume que acontece com esse símbolo durante o passo de derivação?",
+"alternativas": ["É removido da palavra.", "É substituído por um símbolo padrão (e.g., espaço em branco).", "É substituído por si mesmo (a \\rightarrow a).", "Interrompe o processo de derivação."],
+"respostaCorreta": 2
+},
+{
+"id": 91,
+"enunciado": "O que caracteriza um L-System Livre de Contexto (OL-system) em termos de aplicação de regras e cabeças das regras?",
+"alternativas": ["Aplicação de uma regra de cada vez; cabeças com um único símbolo.", "Aplicação simultânea de regras; cabeças com um único símbolo.", "Aplicação de uma regra de cada vez; cabeças com dois ou mais símbolos.", "Aplicação simultânea de regras; cabeças com dois ou mais símbolos."],
+"respostaCorreta": 1
+},
+{
+"id": 92,
+"enunciado": "Na interpretação de um L-System para gerar objetos gráficos 2D (usando a 'tartaruga'), qual a ação associada ao símbolo '+'?",
+"alternativas": ["Mover para a frente sem desenhar.", "Mudar a orientação no sentido horário.", "Mudar a orientação no sentido anti-horário.", "Desenhar um ponto."],
+"respostaCorreta": 2
+},
+{
+"id": 93,
+"enunciado": "Na interpretação 2D da 'tartaruga' para L-Systems, qual a ação do símbolo '-'?",
+"alternativas": ["Mudar a orientação no sentido anti-horário.", "Mudar a orientação no sentido horário.", "Mover para a frente e desenhar uma linha.", "Voltar à posição inicial."],
+"respostaCorreta": 1
+},
+{
+"id": 94,
+"enunciado": "Qual é o estado inicial assumido para a 'tartaruga' na geração de objetos gráficos 2D?",
+"alternativas": ["Posição (1, 1), orientação 45 graus.", "Posição (0, 0), orientação 0 graus.", "Uma posição aleatória no espaço 2D.", "Posição do último ponto desenhado."],
+"respostaCorreta": 1
+},
+{
+"id": 95,
+"enunciado": "O que são Símbolos Paramétricos em L-Systems?",
+"alternativas": ["Símbolos que representam ramificações.", "Símbolos que iniciam uma nova derivação.", "Símbolos do alfabeto que possuem parâmetros associados (como um valor numérico).", "Símbolos que definem a cor da linha a ser desenhada."],
+"respostaCorreta": 2
+},
+{
+"id": 96,
+"enunciado": "No contexto das Curvas de Koch e símbolos paramétricos como F(l), o que o parâmetro 'l' representa tipicamente?",
+"alternativas": ["A espessura da linha.", "O ângulo de rotação.", "A distância percorrida ou o comprimento da linha desenhada.", "O número de iterações da derivação."],
+"respostaCorreta": 2
+},
+{
+"id": 97,
+"enunciado": "Que estrutura de dados é utilizada, de acordo com as fontes, para implementar a capacidade de ramificação (como em plantas) ao gerar objetos gráficos com L-Systems?",
+"alternativas": ["Uma fila FIFO (First-In, First-Out).", "Um array dinâmico.", "Uma pilha LIFO (Last-In, First-Out).", "Uma árvore binária."],
+"respostaCorreta": 2
+},
+{
+"id": 98,
+"enunciado": "Na interpretação de L-Systems para gerar objetos gráficos com ramificações, qual a interpretação do símbolo '['?",
+"alternativas": ["Começar um novo segmento.", "Desenhar um ramo.", "Salvar o estado atual da 'tartaruga' na pilha.", "Alterar a cor do desenho."],
+"respostaCorreta": 2
+},
+{
+"id": 99,
+"enunciado": "Ao modelar com L-Systems em 3D, qual a interpretação do símbolo '&' para controlar a orientação da 'tartaruga'?",
+"alternativas": ["Inclinar para baixo ('pitch down').", "Inclinar para cima ('pitch up').", "Rolar para a esquerda ('roll left').", "Rodar para a esquerda ('turn left')."],
+"respostaCorreta": 0
+},
+{
+"id": 100,
+"enunciado": "Num L-System Estocástico, se um símbolo 'a' tem múltiplas regras de produção associadas com probabilidades (e.g., $a \\xrightarrow{q_1} B_1, a \\xrightarrow{q_2} B_2, ...$), qual deve ser a soma de todas as probabilidades ($q_1 + q_2 + ...$) associadas a esse símbolo?",
+"alternativas": ["Zero.", "O número de regras de produção para 'a'.", "Um.", "Qualquer valor positivo."],
+"respostaCorreta": 2
+},
+{
+      "id": 101,
+      "enunciado": "Em comparação com a renderização em tempo real baseada em matrizes de projeção e rasterização, qual é uma vantagem chave do ray tracing?",
+      "alternativas": ["É computacionalmente menos intensivo.", "É o método principal para jogos em tempo real.", "Pode alcançar um nível mais alto de foto-realismo.", "Utiliza exclusivamente mapas de sombra para efeitos visuais."],
+      "respostaCorreta": 2
+    },
+    {
+      "id": 102,
+      "enunciado": "Qual é a principal razão mencionada para que o ray tracing seja majoritariamente utilizado para renderização off-line?",
+      "alternativas": ["A dificuldade em lidar com reflexos.", "O alto custo computacional da simulação de transporte de luz.", "A incapacidade de gerar sombras.", "A necessidade de hardware gráfico dedicado."],
+      "respostaCorreta": 1
+    },
+    {
+      "id": 103,
+      "enunciado": "Qual é a simplificação fundamental do Whitted Ray Tracing em relação ao fluxo de luz na natureza?",
+      "alternativas": ["Ignora completamente a iluminação indireta.", "Simula a luz fluindo das fontes para a câmera.", "Simula a luz fluindo da câmera para o ambiente.", "Considera apenas a iluminação ambiente."],
+      "respostaCorreta": 2
+    },
+    {
+      "id": 104,
+      "enunciado": "No Whitted Ray Tracing, o que é o 'raio primário'?",
+      "alternativas": ["Um raio lançado de uma fonte de luz.", "Um raio que simula uma sombra.", "Um raio lançado da câmera através de um pixel.", "Um raio que simula refração."],
+      "respostaCorreta": 2
+    },
+    {
+      "id": 105,
+      "enunciado": "Qual é o primeiro passo típico após lançar um raio primário e encontrar o ponto de interseção mais próximo no Whitted Ray Tracing?",
+      "alternativas": ["Lançar raios de refração.", "Calcular a equação de sombreamento para o ponto.", "Verificar a profundidade da recursão.", "Lançar raios de reflexão."],
+      "respostaCorreta": 1
+    },
+    {
+      "id": 106,
+    "enunciado": "No pseudo-código do Whitted Ray Tracing apresentado abaixo, como a função `raycolor` lida com superfícies reflexivas não perfeitas?\n\n```\nColor raycolor(Ray d){\n  Point p = hit(d);\n  if p == null (no surface was hit)\n    return Color(0,0,0);\n  Color c = shading(p);\n  if p is on a reflective surface{\n    Ray r = reflection(d, p);\n    c = (1-cs)*c + cs*raycolor(r);\n  }else if p is on a refractive surface{\n    Ray r = reflection(d, p);\n    Ray t = refraction(d, p);\n    double re = energy_ratio(d, p);\n    c = (1-cs)*c + cs*(re*raycolor(r)+(1-re)*raycolor(t));\n  }\n  return c;\n}\n```",
+      "alternativas": ["Apenas calcula a cor localmente.", "Descarta o raio de reflexão.", "Mistura a cor obtida pelo raio de reflexão com a cor localmente calculada.", "Lança múltiplos raios de reflexão."],
+      "respostaCorreta": 2
+    },
+    {
+      "id": 107,
+      "enunciado": "Para superfícies refrativas (como vidro), o que acontece com a energia do raio incidente?",
+      "alternativas": ["É totalmente refletida.", "É totalmente absorvida.", "Parte é refletida e parte é refratada.", "Apenas a refração é considerada."],
+      "respostaCorreta": 2
+    },
+    {
+      "id": 108,
+      "enunciado": "Em ray tracing, como as sombras 'duras' são implementadas?",
+      "alternativas": ["Lançando um raio de sombra para cada pixel.", "Verificando a visibilidade da fonte de luz a partir do ponto na superfície através de um raio de sombra.", "Usando mapas de sombra.", "Aplicando um filtro de desfoque nas sombras."],
+      "respostaCorreta": 1
+    },
+    {
+      "id": 109,
+      "enunciado": "O que caracteriza as imagens produzidas pelo 'vanilla ray tracing' (ray tracing básico)?",
+      "alternativas": ["Sombras suaves e profundidade de campo.", "Reflexos fofos e motion blur.", "Imagens nítidas com sombras duras e foco perfeito.", "Sombras coloridas e caustics."],
+      "respostaCorreta": 2
+    },
+    {
+      "id": 110,
+      "enunciado": "Qual é a abordagem central do 'Distributed Ray Tracing' para obter um rendering mais natural?",
+      "alternativas": ["Usar equações de sombreamento mais complexas.", "Lançar múltiplos raios com ruído aleatório e calcular a média.", "Ignorar a iluminação indireta.", "Implementar apenas reflexos perfeitos."],
+      "respostaCorreta": 1
+    },
+    {
+      "id": 111,
+      "enunciado": "Qual é o objetivo do anti-aliasing em ray tracing?",
+      "alternativas": ["Aumentar a resolução da imagem.", "Simular efeitos de lente.", "Reduzir ruído em superfícies difusas.", "Reconstruir a geometria a partir de amostras discretas para produzir imagens mais agradáveis."],
+      "respostaCorreta": 3
+    },
+    {
+      "id": 112,
+      "enunciado": "Por que o 'Random Stratified Sampling' é preferível ao 'sub-pixel regular sampling' para anti-aliasing?",
+      "alternativas": ["É computacionalmente mais rápido.", "Evita a emergência de Padrões de Moiré.", "Produz imagens mais nítidas.", "Simula profundidade de campo."],
+      "respostaCorreta": 1
+    },
+    {
+      "id": 113,
+      "enunciado": "Como o ray tracing implementa tipicamente 'sombras suaves' (soft shadows)?",
+      "alternativas": ["Usando apenas luzes pontuais.", "Lançando múltiplos raios de sombra do ponto na superfície em direção à área de luz e calculando a média da visibilidade.", "Desfocando as sombras geradas por luzes pontuais.", "Ignorando completamente as sombras."],
+      "respostaCorreta": 1
+    },
+    {
+      "id": 114,
+      "enunciado": "Na simulação de profundidade de campo em ray tracing, onde está localizado o 'ponto focal' para um determinado pixel?",
+      "alternativas": ["Na posição da câmera.", "No ponto de interseção mais próximo com a geometria.", "Na interseção do raio primário com o plano focal definido.", "Aleatoriamente dentro do pixel."],
+      "respostaCorreta": 2
+    },
+    {
+      "id": 115,
+      "enunciado": "Para simular profundidade de campo, raios são lançados de posições aleatórias ao redor do 'olho' e passam por qual ponto?",
+      "alternativas": ["Um ponto aleatório no plano da imagem.", "O ponto de interseção mais próximo com a geometria.", "O ponto focal no plano focal.", "A posição da fonte de luz."],
+      "respostaCorreta": 2
+    },
+    {
+      "id": 116,
+      "enunciado": "Como as 'reflexões fofas' (glossy reflections) são simuladas em ray tracing?",
+      "alternativas": ["Lançando um único raio de reflexão perfeito.", "Desfocando o resultado de uma reflexão perfeita.", "Lançando raios de reflexão com perturbações aleatórias e calculando a média.", "Ignorando o componente especular."],
+      "respostaCorreta": 2
+    },
+    {
+      "id": 117,
+      "enunciado": "O 'motion blur' em animação é útil para compensar qual limitação?",
+      "alternativas": ["A falta de realismo das sombras.", "A incapacidade de simular reflexos.", "A limitação na taxa de quadros (frame rate).", "O alto custo computacional do ray tracing."],
+      "respostaCorreta": 2
+    },
+    {
+      "id": 118,
+      "enunciado": "Qual é o objetivo principal dos 'acceleration schemes' em ray tracing?",
+      "alternativas": ["Melhorar a qualidade visual.", "Reduzir o custo computacional.", "Simular efeitos de luz mais complexos.", "Aumentar o número de raios lançados."],
+      "respostaCorreta": 1
+    },
+    {
+      "id": 119,
+      "enunciado": "Como as 'Bounding Volume Hierarchies (BVH)' aceleram o ray tracing?",
+      "alternativas": ["Evitando completamente os testes de interseção raio-objeto.", "Organizando caixas delimitadoras em uma estrutura hierárquica para reduzir o número de testes de interseção.", "Apenas testando interseções com caixas que contêm fontes de luz.", "Usando subdivisão espacial regular."],
+      "respostaCorreta": 1
+    },
+    {
+      "id": 120,
+      "enunciado": "Na 'regular space subdivision', onde os testes de interseção raio-objeto são realizados?",
+      "alternativas": ["Em todas as células da grade.", "Apenas nas células da grade que são atravessadas pelo raio e que contêm geometria.", "Apenas nas células da grade mais próximas da câmera.", "Apenas nas células da grade que contêm fontes de luz."],
+      "respostaCorreta": 1
+    },
+    {
+"id": 121,
+"enunciado": "Qual dos seguintes passos funcionais da GPU realiza operações por vértice, como computation of the shading equation se usar Gourad interpolation?",
+"alternativas": [
+"Clipping step",
+"Rasterisation step",
+"Vertex processing step",
+"Screen mapping step"
+],
+"respostaCorreta": 2
+},
+{
+"id": 122,
+"enunciado": "No processo de rasterização, qual a relação entre um fragmento e um pixel?",
+"alternativas": [
+"Um fragmento é o mesmo que um pixel, apenas com um nome diferente.",
+"Um fragmento pertence a um triângulo e corresponde a uma dada área de pixel no ecrã, podendo haver muitos fragmentos por pixel.",
+"Um pixel pertence a um triângulo e corresponde a uma dada área de fragmento no ecrã, podendo haver muitos pixels por fragmento.",
+"A rasterização determina os pixels diretamente, não havendo o conceito de fragmentos."
+],
+"respostaCorreta": 1
+},
+{
+"id": 123,
+"enunciado": "No contexto da rasterização, qual a principal diferença no método de interpolação entre Gourad interpolation e Phong interpolation?",
+"alternativas": [
+"Gourad interpola normais e posições, enquanto Phong interpola cores.",
+"Gourad é usado para reflexões, enquanto Phong é usado para refrações.",
+"Gourad interpola cores calculadas por vértice, enquanto Phong interpola normais e posições para recalcular a shading equation por fragmento.",
+"Gourad e Phong são sinónimos para o mesmo método de interpolação de cor."
+],
+"respostaCorreta": 2
+},
+{
+"id": 124,
+"enunciado": "Num visibility test com z-buffer, como é determinado qual fragmento pinta o pixel correspondente quando vários se sobrepõem?",
+"alternativas": [
+"O fragmento com a maior profundidade (distância da câmara) é selecionado.",
+"O fragmento com a menor profundidade (distância da câmara) é selecionado.",
+"O fragmento rasterizado por último é sempre selecionado.",
+"O fragmento com a cor mais brilhante é selecionado."
+],
+"respostaCorreta": 1
+},
+{
+"id": 125,
+"enunciado": "Em real-time rendering, qual método utiliza um cubo imaginário centrado num ponto para capturar a vista do ambiente e usá-la para simular reflexões e refrações?",
+"alternativas": [
+"Shadow mapping",
+"Gourad interpolation",
+"Cube mapping",
+"Z-buffering"
+],
+"respostaCorreta": 2
+},
+{
+"id": 126,
+"enunciado": "A Lei de Snell relaciona os ângulos de incidência e refração com base em quê?",
+"alternativas": [
+"A cor da luz e a rugosidade da superfície.",
+"As propriedades elétricas dos dois meios.",
+"Os índices de refração dos dois meios.",
+"A distância percorrida pela luz em cada meio."
+],
+"respostaCorreta": 2
+},
+{
+"id": 127,
+"enunciado": "O modelo de Schlick é uma aproximação a qual conjunto de equações e para que propósito é particularmente útil em real-time rendering?",
+"alternativas": [
+"Lei de Snell, para calcular o vetor de refração.",
+"Beer’s Law, para calcular a atenuação da luz.",
+"Fresnel Equations, para determinar a fração de luz refletida em função do ângulo de incidência, sendo mais rápido de computar.",
+"Shading equation, para calcular a cor final de um ponto."
+],
+"respostaCorreta": 2
+},
+{
+"id": 128,
+"enunciado": "Como se converte um ponto em coordenadas homogéneas (x, y, z, w) para coordenadas cartesianas (x', y', z')?",
+"alternativas": [
+"x' = x * w, y' = y * w, z' = z * w",
+"x' = x + w, y' = y + w, z' = z + w",
+"x' = x / w, y' = y / w, z' = z / w",
+"Não é possível converter de homogéneas para cartesianas."
+],
+"respostaCorreta": 2
+},
+{
+"id": 129,
+"enunciado": "No modelo pinhole, o que causa a perspetiva, fazendo com que objetos distantes pareçam menores?",
+"alternativas": [
+"A projeção paralela das linhas de vista.",
+"A divisão das coordenadas X e Y do ponto 3D pela sua coordenada Z (distância à câmara).",
+"A aplicação de uma matriz de translação.",
+"O processo de rasterização dos triângulos."
+],
+"respostaCorreta": 1
+},
+{
+"id": 130,
+"enunciado": "Na projeção ortográfica, como se transforma um volume ortográfico [l,r]x[b,t]x[n,f] para um volume canónico [-1,1]x[-1,1]x[-1,1]?",
+"alternativas": [
+"Apenas com uma translação.",
+"Apenas com uma escala.",
+"Com uma translação seguida de uma escala.",
+"Com uma rotação seguida de uma translação."
+],
+"respostaCorreta": 2
+},
+{
+"id": 131,
+"enunciado": "Qual a sequência de transformações para converter o canonical screen (2x2) para o tamanho desejado do viewport (nx x ny) em projeção ortográfica?",
+"alternativas": [
+"Escala seguida de translação.",
+"Translação seguida de escala.",
+"Apenas escala.",
+"Apenas translação."
+],
+"respostaCorreta": 0
+},
+{
+"id": 132,
+"enunciado": "Quando a matriz de projeção perspetiva (Mp) é aplicada a um ponto 3D (X, Y, Z, 1) em coordenadas homogéneas, quais são as coordenadas homogéneas resultantes (x', y', z', w') geradas?",
+"alternativas": [
+"x' = X, y' = Y, z' = Z, w' = 1",
+"x' = nX, y' = nY, z' = (n+f)Z - fn, w' = Z (assumindo n e f negativos)",
+"x' = X/Z, y' = Y/Z, z' = (n+f)/Z - fn, w' = 1",
+"x' = X, y' = Y, z' = Z, w' = Z"
+],
+"respostaCorreta": 1
+},
+{
+"id": 133,
+"enunciado": "Para projetar um ponto 3D do espaço do mundo para as coordenadas do ecrã com perspetiva, qual a ordem correta de aplicação das matrizes View (Mv), Perspective (Mp) e Orthographic (Mo)?",
+"alternativas": [
+"Mo * Mp * Mv",
+"Mv * Mp * Mo",
+"Mp * Mv * Mo",
+"Mv * Mo * Mp"
+],
+"respostaCorreta": 0
+},
+{
+"id": 134,
+"enunciado": "O que constitui um L-System?",
+"alternativas": [
+"Uma tupla (Alfabeto, Conjunto de palavras, Regras gramaticais)",
+"Uma tupla (Símbolo inicial, Regras de produção, Palavras geradas)",
+"Uma tupla (Alfabeto de símbolos, Palavra inicial (axioma), Conjunto de regras de produção)",
+"Uma tupla (Gramática, Autómato finito, Linguagem)"
+],
+"respostaCorreta": 2
+},
+{
+"id": 135,
+"enunciado": "Como são aplicadas as regras de produção num L-System em cada passo de derivação?",
+"alternativas": [
+"Apenas uma regra é aplicada de cada vez, substituindo um único símbolo ou sequência de símbolos.",
+"Todas as regras de produção aplicáveis são aplicadas simultaneamente a todos os símbolos da palavra atual.",
+"As regras são aplicadas de forma aleatória.",
+"As regras são aplicadas sequencialmente, uma após a outra, sobre a palavra atual."
+],
+"respostaCorreta": 1
+},
+{
+"id": 136,
+"enunciado": "Na interpretação de um L-System para desenhar objetos 2D usando a linguagem Logo, o que representa o símbolo 'F(l)'?",
+"alternativas": [
+"Mover para a frente uma distância 'l' sem desenhar uma linha.",
+"Mudar a orientação em 'l' graus no sentido anti-horário.",
+"Mover para a frente uma distância 'l' e desenhar uma linha dessa extensão.",
+"Salvar o estado atual da tartaruga na pilha."
+],
+"respostaCorreta": 2
+},
+{
+"id": 137,
+"enunciado": "Que símbolos são introduzidos num alfabeto de L-System para permitir a geração de estruturas com ramificações, como as de plantas?",
+"alternativas": [
+"+ e - para mudar a orientação.",
+"f e F para mover para a frente.",
+"[ para guardar o estado da tartaruga e ] para restaurar o estado da tartaruga.",
+"l para especificar o comprimento da linha."
+],
+"respostaCorreta": 2
+},
+{
+"id": 138,
+"enunciado": "Qual a característica distintiva de um L-System estocástico em comparação com um determinístico?",
+"alternativas": [
+"Possui um alfabeto maior.",
+"Permite a geração de estruturas 3D.",
+"As regras de produção têm probabilidades associadas, tornando as derivações não determinísticas.",
+"As regras de produção aplicam-se a sequências de múltiplos símbolos (context-sensitive)."
+],
+"respostaCorreta": 2
+},
+{
+"id": 139,
+"enunciado": "Comparando real-time rendering (usando projection matrices + rasterisation + heuristics) com ray tracing (como Whitted Ray Tracing ou Path Tracing), qual a principal diferença no resultado visual tipicamente alcançado?",
+"alternativas": [
+"Ray tracing é geralmente mais rápido e eficiente para grandes cenas.",
+"Real-time rendering alcança um nível mais alto de fotorrealismo ao simular o transporte de luz de forma mais aproximada.",
+"Ray tracing simula o transporte de luz com modelos físicos aproximados, permitindo um nível mais alto de fotorrealismo, embora seja computacionalmente mais caro.",
+"Ambos os métodos produzem resultados visuais idênticos em termos de fotorrealismo."
+],
+"respostaCorreta": 2
+},
+{
+"id": 140,
+"enunciado": "No princípio do algoritmo Whitted Ray Tracing, qual o primeiro passo para determinar a cor de um pixel?",
+"alternativas": [
+"Calcular a shading equation para cada objeto na cena.",
+"Lançar múltiplos raios de luz da fonte para a cena.",
+"Lançar um raio primário (primary ray) da posição da câmara, passando pelo pixel.",
+"Determinar todos os objetos visíveis no viewport."
+],
+"respostaCorreta": 2
+},
+{
+"id": 141,
+"enunciado": "De acordo com os materiais, qual a principal tarefa desempenhada pela CPU na orquestração da geração de imagens em tempo real em conjunto com a GPU?",
+"alternativas": [
+"Executar todos os passos de renderização diretamente.",
+"Gerar os dados da cena e enviá-los para a GPU para renderização.",
+"Realizar a rasterização dos triângulos.",
+"Aplicar a equação de sombreamento a cada fragmento."
+],
+"respostaCorreta": 1
+},
+{
+"id": 142,
+"enunciado": "Qual a ordem correta dos principais passos funcionais executados sequencialmente pela GPU para a renderização de cada frame, de acordo com o modelo funcional apresentado?",
+"alternativas": [
+"Vertex processing, Model & view transform, Clipping, Projection, Screen mapping, Rasterisation, Visibility test.",
+"Model & view transform, Vertex processing, Clipping, Projection, Screen mapping, Rasterisation, Visibility test.",
+"Rasterisation, Vertex processing, Projection, Clipping, Screen mapping, Model & view transform, Visibility test.",
+"Model & view transform, Projection, Clipping, Vertex processing, Screen mapping, Rasterisation, Visibility test."
+],
+"respostaCorreta": 1
+},
+{
+"id": 143,
+"enunciado": "No processo de rasterização de um triângulo, qual o propósito de identificar o 'bounding rectangle' (retângulo delimitador)?",
+"alternativas": [
+"Determinar a cor dos fragmentos.",
+"Focar o esforço de processamento apenas nos fragmentos potencialmente valiosos dentro dessa área.",
+"Aplicar a interpolação de Gouraud.",
+"Realizar o teste de visibilidade com o z-buffer."
+],
+"respostaCorreta": 1
+},
+{
+"id": 144,
+"enunciado": "Como é determinado se o centro de um fragmento (p) está dentro de um triângulo 2D (abc) durante a rasterização, utilizando coordenadas baricêntricas?",
+"alternativas": [
+"Verificando se o ponto p tem a mesma coordenada Z dos vértices do triângulo.",
+"Calculando as coordenadas baricêntricas de p em relação a abc (α, β, γ) e verificando se todas estão entre 0 e 1.",
+"Comparando a cor do fragmento com a cor dos vértices do triângulo.",
+"Medindo a distância euclidiana do ponto p aos três vértices do triângulo."
+],
+"respostaCorreta": 1
+},
+{
+"id": 145,
+"enunciado": "Em real-time rendering, qual técnica de anti-aliasing simples consiste em suavizar a imagem calculando a intensidade de cada pixel como a média da intensidade dos seus pixeis vizinhos?",
+"alternativas": [
+"Mipmapping",
+"Anisotropic filtering",
+"Box filter",
+"Supersampling"
+],
+"respostaCorreta": 2
+},
+{
+"id": 146,
+"enunciado": "Qual o primeiro passo no algoritmo de Shadow Mapping para adicionar sombras em tempo real?",
+"alternativas": [
+"Calcular a shading equation para todos os pontos da cena.",
+"Lançar raios da câmara principal para a cena.",
+"Criar uma câmara na posição da fonte de luz e renderizar uma imagem para obter um mapa de profundidade (shadow map).",
+"Identificar todos os objetos que projetam sombras."
+],
+"respostaCorreta": 2
+},
+{
+"id": 147,
+"enunciado": "No Shadow Mapping, ao comparar a distância Zm (do shadow map) com a distância Zp (do ponto da vista da luz), o que significa a condição Zm < Zp?",
+"alternativas": [
+"O ponto está diretamente iluminado pela fonte de luz.",
+"O ponto está numa área mais distante da câmara principal.",
+"Existe um objeto entre o ponto e a fonte de luz, significando que o ponto está na sombra.",
+"A resolução do shadow map é muito baixa."
+],
+"respostaCorreta": 2
+},
+{
+"id": 148,
+"enunciado": "Segundo a Lei de Beer, o que causa a atenuação da luz ao atravessar um meio denso?",
+"alternativas": [
+"A reflexão da luz nas superfícies do meio.",
+"A difração da luz.",
+"A densidade e a largura do meio percorrido pela luz.",
+"A cor da fonte de luz."
+],
+"respostaCorreta": 2
+},
+{
+"id": 149,
+"enunciado": "No contexto de Environment Mapping, o que é um 'cube map'?",
+"alternativas": [
+"Um tipo especial de textura 3D.",
+"Um cubo imaginário centrado num ponto, cujas seis faces são texturas obtidas renderizando a vista a partir desse ponto em seis direções ortogonais.",
+"Uma técnica para gerar sombras suaves.",
+"Um algoritmo para detetar colisões entre objetos cúbicos."
+],
+"respostaCorreta": 1
+},
+{
+"id": 150,
+"enunciado": "Qual a principal diferença entre a projeção ortográfica e a projeção perspetiva no que diz respeito às linhas de projeção e ao tamanho aparente dos objetos?",
+"alternativas": [
+"Ortográfica usa linhas convergentes e objetos distantes parecem menores; Perspetiva usa linhas paralelas e o tamanho é constante.",
+"Ortográfica usa linhas paralelas e o tamanho é constante; Perspetiva usa linhas convergentes e objetos distantes parecem menores.",
+"Ortográfica projeta apenas pontos, enquanto Perspetiva projeta triângulos.",
+"Ortográfica é usada para 3D, enquanto Perspetiva é usada para 2D."
+],
+"respostaCorreta": 1
+},
+{
+"id": 151,
+"enunciado": "Por que razão as coordenadas homogéneas são utilizadas no contexto das transformações e projeções em computação gráfica?",
+"alternativas": [
+"Para simplificar cálculos de cor.",
+"Para permitir a representação de translações (que são não lineares em coordenadas cartesianas) como operações matriciais lineares, e para facilitar a divisão por Z na projeção perspetiva.",
+"Para reduzir a quantidade de memória necessária para armazenar pontos.",
+"Para facilitar a deteção de colisões entre objetos."
+],
+"respostaCorreta": 1
+},
+{
+"id": 152,
+"enunciado": "No modelo pinhole, o efeito de perspetiva, onde objetos mais distantes parecem menores, é causado pela divisão das coordenadas X e Y de um ponto 3D por qual valor?",
+"alternativas": [
+"A coordenada X do ponto.",
+"A coordenada Y do ponto.",
+"A coordenada Z (profundidade) do ponto.",
+"Um valor constante definido pela matriz de projeção."
+],
+"respostaCorreta": 2
+},
+{
+"id": 153,
+"enunciado": "Quando a matriz de projeção perspetiva (Mp) é aplicada a um ponto 3D em coordenadas homogéneas, o que a coordenada z' resultante (após a transformação mas antes da homogeneização) representa?",
+"alternativas": [
+"A coordenada X do ponto no espaço da câmara.",
+"Uma medida da profundidade do ponto que preserva a ordem de profundidade e é útil para o z-buffer.",
+"A coordenada Y do ponto no espaço do ecrã.",
+"Um valor constante."
+],
+"respostaCorreta": 1
+},
+{
+"id": 154,
+"enunciado": "A matriz View (Mv) é utilizada para qual propósito no pipeline de renderização?",
+"alternativas": [
+"Transformar pontos do espaço local para o espaço do mundo.",
+"Projetar pontos 3D para o plano da imagem.",
+"Transformar pontos do espaço do mundo para o espaço da câmara.",
+"Mapear pontos projetados para as coordenadas do ecrã."
+],
+"respostaCorreta": 2
+},
+{
+"id": 155,
+"enunciado": "Num L-System, como as regras de produção são aplicadas em cada passo de derivação, especialmente em contraste com gramáticas context-free tradicionais?",
+"alternativas": [
+"Apenas uma regra é aplicada aleatoriamente em cada passo.",
+"Apenas a regra mais longa que se aplica é utilizada.",
+"Todas as regras aplicáveis a todos os símbolos da palavra atual são aplicadas simultaneamente.",
+"As regras são aplicadas sequencialmente a partir do início da palavra."
+],
+"respostaCorreta": 2
+},
+{
+"id": 156,
+"enunciado": "Ao interpretar um L-System para controlar uma 'tartaruga' em 3D, qual dos seguintes conjuntos de vetores é usado para representar a sua orientação?",
+"alternativas": [
+"Posição (x, y, z).",
+"Cor (R, G, B).",
+"Heading, Left, Up.",
+"Velocidade e aceleração."
+],
+"respostaCorreta": 2
+},
+{
+"id": 157,
+"enunciado": "Num algoritmo de Ray Tracing, como são implementadas as sombras suaves (soft shadows)?",
+"alternativas": [
+"Assumindo que a fonte de luz é um único ponto infinitesimal.",
+"Lançando apenas um raio de sombra por ponto em direção ao centro da fonte de luz.",
+"Lançando múltiplos raios de sombra de cada ponto visível em direção a diferentes posições dentro da área da fonte de luz e calculando a média.",
+"Através da interpolação da cor dos pontos vizinhos."
+],
+"respostaCorreta": 2
+},
+{
+"id": 158,
+"enunciado": "Em Ray Tracing, a amostragem estratificada aleatória (random stratified sampling) é utilizada para que fim?",
+"alternativas": [
+"Acelerar o cálculo das intersecções de raios.",
+"Gerar sombras mais nítidas.",
+"Evitar padrões de Moiré no anti-aliasing e outras técnicas estocásticas.",
+"Simular reflexões perfeitas."
+],
+"respostaCorreta": 2
+},
+{
+"id": 159,
+"enunciado": "Como são geralmente implementadas as reflexões 'glossy' (brilhantes, mas não perfeitas) em Ray Tracing?",
+"alternativas": [
+"Calculando apenas um raio de reflexão perfeito.",
+"Descartando todos os raios de reflexão.",
+"Lançando múltiplos raios de reflexão com pequenas perturbações aleatórias e calculando a média das cores obtidas.",
+"Aplicando um filtro de suavização na imagem final."
+],
+"respostaCorreta": 2
+},
+{
+"id": 160,
+"enunciado": "Qual a principal vantagem da utilização de estruturas de aceleração como Bounding Volume Hierarchies (BVH) ou subdivisão espacial regular em Ray Tracing?",
+"alternativas": [
+"Aumentar o fotorrealismo das imagens.",
+"Reduzir a quantidade de memória necessária para armazenar a cena.",
+"Diminuir o custo computacional, evitando testes de intersecção de raios com todos os objetos da cena.",
+"Simplificar o modelo de iluminação."
+],
+"respostaCorreta": 2
+},
+{
+    "id": 161,
+    "enunciado": "De acordo com os materiais, quais são os dois tipos principais de módulos funcionais presentes numa GPU?",
+    "alternativas": [
+      "Módulos de Áudio e Módulos de Vídeo.",
+      "Módulos de Memória e Módulos de Processamento.",
+      "Módulos fixos otimizados (e.g., Gouraud interpolation) e módulos programáveis (shaders, e.g., Phong interpolation).",
+      "Módulos de Input/Output e Módulos de Rede."
+    ],
+    "respostaCorreta": 2
+  },
+  {
+    "id": 162,
+    "enunciado": "Qual o propósito principal da etapa de 'Clipping' no pipeline funcional da GPU para a renderização de cada frame?",
+    "alternativas": [
+      "Reduzir o esforço de computação descartando triângulos fora do volume de visualização.",
+      "Calcular a cor final dos pixeis.",
+      "Interpolar os atributos dos vértices pelos fragmentos.",
+      "Transformar as coordenadas dos vértices para o espaço do ecrã."
+    ],
+    "respostaCorreta": 0
+  },
+  {
+    "id": 163,
+    "enunciado": "A etapa de 'Screen Mapping' no pipeline da GPU tem como principal objetivo:",
+    "alternativas": [
+      "Testar a visibilidade dos objetos na cena.",
+      "Determinar quais fragmentos pertencem a um triângulo.",
+      "Projetar os vértices 3D para o plano da imagem.",
+      "Escalar e transladar os vértices projetados para ajustar ao tamanho e posição desejados do viewport no ecrã."
+    ],
+    "respostaCorreta": 3
+  },
+  {
+    "id": 164,
+    "enunciado": "No teste de visibilidade utilizando o z-buffer durante a rasterização, como é decidido qual fragmento pinta o pixel correspondente quando múltiplos fragmentos se sobrepõem?",
+    "alternativas": [
+      "O fragmento do triângulo processado por último.",
+      "O fragmento com a cor mais clara.",
+      "O fragmento com a maior área projetada.",
+      "O fragmento com a menor profundidade (distância da câmara)."
+    ],
+    "respostaCorreta": 3
+  },
+  {
+    "id": 165,
+    "enunciado": "Em abordagens de sombreamento como Gouraud ou Phong no pipeline da GPU, qual a diferença fundamental na aplicação da equação de sombreamento?",
+    "alternativas": [
+      "Gouraud é usada para reflexões; Phong é usada para refrações.",
+      "Gouraud calcula por pixel, Phong calcula por vértice.",
+      "Gouraud interpola cores dos vértices pelos fragmentos; Phong interpola normais dos vértices e recalcula a equação por fragmento.",
+      "Gouraud usa coordenadas baricêntricas; Phong usa coordenadas cartesianas."
+    ],
+    "respostaCorreta": 2
+  },
+  {
+    "id": 166,
+    "enunciado": "A Lei de Snell é utilizada no contexto de computação gráfica para descrever qual fenómeno físico?",
+    "alternativas": [
+      "A atenuação da luz ao atravessar um meio.",
+      "A dispersão da luz num prisma.",
+      "O comportamento da luz ao atravessar a interface entre dois meios com índices de refração diferentes (reflexão e refração).",
+      "A fração de luz refletida vs. refratada numa interface entre meios."
+    ],
+    "respostaCorreta": 2
+  },
+  {
+    "id": 167,
+    "enunciado": "No contexto de interação luz-matéria, as Equações de Fresnel (ou a aproximação de Schlick) permitem determinar:",
+    "alternativas": [
+      "O índice de refração de um meio.",
+      "A fração da luz incidente que é refletida numa interface em função do ângulo de incidência.",
+      "A cor de um material opaco.",
+      "A velocidade da luz num meio."
+    ],
+    "respostaCorreta": 1
+  },
+  {
+    "id": 168,
+    "enunciado": "Como é construído um 'cube map' para uso em 'Environment Mapping'?",
+    "alternativas": [
+      "Projetando a cena esférica para as faces de um cubo.",
+      "Renderizando seis imagens da cena a partir de um ponto central, cada uma alinhada com uma das seis direções ortogonais (faces de um cubo imaginário).",
+      "Aplicando uma textura 2D repetidamente nas faces de um cubo.",
+      "Calculando a média das cores dos objetos dentro de um cubo."
+    ],
+    "respostaCorreta": 1
+  },
+  {
+    "id": 169,
+    "enunciado": "No contexto de 'Environment Mapping', qual a principal diferença entre 'Reflection Probes' e 'Skyboxes'?",
+    "alternativas": [
+      "Reflection Probes são usados em ray tracing, Skyboxes em real-time rendering.",
+      "Reflection Probes são dinâmicos (podem ser atualizados em tempo real), Skyboxes usam texturas estáticas de ficheiros.",
+      "Reflection Probes são cubos reais na cena, Skyboxes são virtuais.",
+      "Reflection Probes são apenas para reflexão, Skyboxes são para refração."
+    ],
+    "respostaCorreta": 1
+  },
+  {
+    "id": 170,
+    "enunciado": "No modelo pinhole para projeção perspetiva, como é encontrada a projeção 2D (q) de um ponto 3D (Q) no plano da imagem?",
+    "alternativas": [
+      "Aplicando uma translação e uma rotação a Q.",
+      "Determinando a intersecção da linha que conecta Q ao centro da câmara com o plano da imagem.",
+      "Calculando a distância euclidiana de Q ao centro da câmara.",
+      "Normalizando as coordenadas de Q."
+    ],
+    "respostaCorreta": 1
+  },
+  {
+    "id": 171,
+    "enunciado": "Por que a operação 'divide-by-Z' (divisão pela coordenada Z do ponto 3D), essencial na projeção perspetiva do modelo pinhole, requer o uso de coordenadas homogéneas para ser representada por uma multiplicação de matrizes?",
+    "alternativas": [
+      "Porque a divisão por Z é uma operação linear que só pode ser feita com matrizes 4x4.",
+      "Porque a divisão por Z só é necessária para projeção ortográfica, não para perspetiva.",
+      "Porque as coordenadas homogéneas removem a necessidade da divisão por Z.",
+      "Porque a divisão por Z introduz uma não-linearidade que não pode ser expressa diretamente como uma multiplicação de matriz linear em coordenadas cartesianas, mas pode ser feita após a multiplicação da matriz de projeção no espaço homogéneo (homogeneização)."
+    ],
+    "respostaCorreta": 3
+  },
+  {
+    "id": 172,
+    "enunciado": "Dado um ponto em coordenadas homogéneas (x, y, z, w), como se obtêm as coordenadas cartesianas correspondentes?",
+    "alternativas": [
+      "(x - w, y - w, z - w)",
+      "(x * w, y * w, z * w)",
+      "(x / w, y / w, z / w)",
+      "(x + w, y + w, z + w)"
+    ],
+    "respostaCorreta": 2
+  },
+  {
+    "id": 173,
+    "enunciado": "Qual a função da Matriz View (Mv) no pipeline de renderização, especialmente em relação ao modelo pinhole?",
+    "alternativas": [
+      "Projetar pontos 3D para o plano 2D da imagem.",
+      "Aplicar a equação de sombreamento aos vértices.",
+      "Transformar pontos definidos no espaço do mundo para o espaço da câmara, onde o modelo pinhole assume que os pontos estão definidos.",
+      "Mapear as coordenadas projetadas para as coordenadas do ecrã."
+    ],
+    "respostaCorreta": 2
+  },
+  {
+    "id": 174,
+    "enunciado": "No pipeline de renderização, qual a ordem correta da multiplicação das matrizes Model (Mm), View (Mv) e Projection (Mp) para transformar um ponto do espaço local para o espaço projetado?",
+    "alternativas": [
+      "Mp * Mv * Mm",
+      "Mv * Mp * Mm",
+      "Mm * Mv * Mp",
+      "Mp * Mm * Mv"
+    ],
+    "respostaCorreta": 0
+  },
+  {
+    "id": 175,
+    "enunciado": "Quais são os três componentes que definem um L-System de acordo com a definição formal apresentada?",
+    "alternativas": [
+      "Alfabeto, Símbolo Inicial, Regras Context-Sensitive.",
+      "Conjunto de Símbolos, Palavra Vazia, Regras de Substituição.",
+      "Alfabeto (symbols), Axioma (non-empty word), Conjunto de Regras de Produção.",
+      "Alfabeto, Símbolo Inicial, Regras Context-Free."
+    ],
+    "respostaCorreta": 2
+  },
+  {
+    "id": 176,
+    "enunciado": "Num L-System interpretado por uma 'tartaruga' 2D com orientação (alfa), qual o efeito dos símbolos '+' e '-'?",
+    "alternativas": [
+      "'+' guarda o estado da tartaruga, '-' restaura o estado.",
+      "'+' aumenta o tamanho do passo, '-' diminui o tamanho do passo.",
+      "'+' move a tartaruga para a frente com desenho, '-' move sem desenho.",
+      "'+' muda a orientação no sentido anti-horário, '-' muda no sentido horário."
+    ],
+    "respostaCorreta": 3
+  },
+  {
+    "id": 177,
+    "enunciado": "No contexto de L-Systems para gerar estruturas com ramificações (como plantas), qual o propósito dos símbolos '[' e ']'",
+    "alternativas": [
+      "Delimitar o início e o fim de uma regra de produção.",
+      "Indicar um movimento para cima e um movimento para baixo.",
+      "Aumentar e diminuir a espessura da linha desenhada.",
+      "Guardar ('[') e restaurar (']') o estado atual da 'tartaruga' (posição e orientação)."
+    ],
+    "respostaCorreta": 3
+  },
+  {
+    "id": 178,
+    "enunciado": "Qual a ideia simplificadora central por trás do Whitted Ray Tracing que o distingue do 'light transport' na natureza e o torna mais computacionalmente viável?",
+    "alternativas": [
+      "Simular todos os caminhos de luz possíveis de todas as fontes.",
+      "Imaginar que a luz flui da câmara para o ambiente, em vez de da fonte de luz para a câmara.",
+      "Calcular a iluminação apenas com base na luz ambiente.",
+      "Descartar todos os raios que não atingem a câmara."
+    ],
+    "respostaCorreta": 1
+  },
+  {
+    "id": 179,
+    "enunciado": "No pseudo-código de Ray Tracing apresentado abaixo, o que faz a função `hit(d)`? \n\n```\nColor raycolor(Ray d){\n  Point p = hit(d);\n  if p == null (no surface was hit) return Color(0,0,0);\n  Color c = shading(p)\n  if p is on a reflective surface{\n    Ray r = reflection(d, p)\n    c = (1-cs)*c + cs*raycolor(r)\n  }\n  return c\n}\n```",
+    "alternativas": [
+      "Aplica as transformações de modelo e vista a um ponto.",
+      "Gera um raio de reflexão a partir de um ponto.",
+      "Retorna o ponto de intersecção mais próximo entre o raio 'd' e a geometria da cena, ou null se não houver intersecção.",
+      "Calcula a cor de um ponto atingido por um raio."
+    ],
+    "respostaCorreta": 2
+  },
+  {
+    "id": 180,
+    "enunciado": "Como são implementadas 'Hard Shadows' num algoritmo básico de Ray Tracing?",
+    "alternativas": [
+      "Lançando múltiplos raios de sombra em direção a diferentes pontos da área da fonte de luz.",
+      "Suavizando a imagem final com um filtro.",
+      "Utilizando um shadow map pré-calculado.",
+      "Calculando a intersecção de um raio de sombra lançado do ponto na superfície em direção à fonte de luz com a geometria da cena; se houver intersecção, o ponto está na sombra."
+    ],
+    "respostaCorreta": 3
+  },
+   {
+    "id": 181,
+    "enunciado": "No pipeline funcional da GPU, qual é a ordem correta das etapas após o 'Vertex Processing'?",
+    "alternativas": [
+      "Clipping, Projection, Screen Mapping, Rasterization, Visibility Test/Display",
+      "Rasterization, Clipping, Projection, Screen Mapping, Visibility Test/Display",
+      "Projection, Clipping, Rasterization, Screen Mapping, Visibility Test/Display",
+      "Screen Mapping, Projection, Clipping, Rasterization, Visibility Test/Display"
+    ],
+    "respostaCorreta": 0
+  },
+  {
+    "id": 182,
+    "enunciado": "Que tipo de informações são tipicamente calculadas ou processadas para cada vértice durante a etapa de 'Vertex Processing', especialmente quando se utiliza interpolação como a de Gouraud?",
+    "alternativas": [
+      "As coordenadas 2D finais no ecrã.",
+      "As coordenadas 3D transformadas para o espaço da câmara e atributos como cor e normal.",
+      "Quais triângulos estão fora do volume de visualização.",
+      "Os fragmentos correspondentes a cada triângulo."
+    ],
+    "respostaCorreta": 1
+  },
+  {
+    "id": 183,
+    "enunciado": "Qual é o principal benefício da etapa de 'Clipping' no pipeline da GPU?",
+    "alternativas": [
+      "Garantir que todas as texturas sejam aplicadas corretamente.",
+      "Ajustar o tamanho dos objetos para caberem no ecrã.",
+      "Reduzir a quantidade de processamento nas etapas subsequentes, removendo triângulos fora da área visível.",
+      "Calcular a contribuição das fontes de luz para a cor final."
+    ],
+    "respostaCorreta": 2
+  },
+  {
+    "id": 184,
+    "enunciado": "Qual é a primeira ação realizada pela etapa de 'Rasterization' no pipeline da GPU?",
+    "alternativas": [
+      "Suavizar as arestas dos triângulos (anti-aliasing).",
+      "Interpolar os atributos dos vértices pelos fragmentos.",
+      "Realizar testes de visibilidade com o z-buffer.",
+      "Determinar quais fragmentos são englobados por cada triângulo projetado em 2D."
+    ],
+    "respostaCorreta": 3
+  },
+  {
+    "id": 185,
+    "enunciado": "No contexto da rasterização na GPU, qual a relação entre um 'fragmento' e um 'pixel'?",
+    "alternativas": [
+      "Um fragmento corresponde a uma área de pixel no ecrã, e pode haver múltiplos fragmentos (de diferentes triângulos) que se sobrepõem no mesmo pixel.",
+      "Um fragmento é sinónimo de um pixel e existe uma correspondência um-para-um.",
+      "Um pixel é sempre menor que um fragmento.",
+      "Um fragmento é um pixel que ainda não foi pintado."
+    ],
+    "respostaCorreta": 0
+  },
+  {
+    "id": 186,
+    "enunciado": "Ao utilizar o z-buffer para o teste de visibilidade durante a rasterização, por que o fragmento com a menor profundidade (menor valor de Z) é escolhido para pintar o pixel correspondente?",
+    "alternativas": [
+      "Porque é o que tem a cor mais brilhante.",
+      "Porque representa o ponto na cena 3D que está mais próximo da câmara e, portanto, não está ocluído.",
+      "Porque é o fragmento do maior triângulo.",
+      "Porque foi o primeiro fragmento a ser processado para aquele pixel."
+    ],
+    "respostaCorreta": 1
+  },
+  {
+    "id": 187,
+    "enunciado": "Qual a caraterística visual de uma projeção ortográfica que a distingue da projeção perspetiva?",
+    "alternativas": [
+      "Objetos distantes parecem menores.",
+      "As linhas paralelas na cena 3D convergem para um ponto no plano da imagem.",
+      "As linhas paralelas na cena 3D permanecem paralelas no plano da imagem e o tamanho dos objetos não varia com a distância à câmara.",
+      "Apresenta distorção radial a partir do centro da imagem."
+    ],
+    "respostaCorreta": 2
+  },
+  {
+    "id": 188,
+    "enunciado": "Na projeção perspetiva, qual o efeito observado em objetos mais distantes da câmara no plano da imagem?",
+    "alternativas": [
+      "A sua cor torna-se mais escura.",
+      "As suas texturas tornam-se mais nítidas.",
+      "São completamente removidos da cena.",
+      "Aparecem menores no plano da imagem."
+    ],
+    "respostaCorreta": 3
+  },
+  {
+    "id": 189,
+    "enunciado": "Por que o uso de coordenadas homogéneas é crucial para representar a projeção perspetiva (modelo pinhole) como uma multiplicação de matrizes, especialmente no que diz respeito à operação 'divide-by-Z'?",
+    "alternativas": [
+      "Porque a divisão por Z é uma operação não-linear que não pode ser expressa diretamente como uma multiplicação de matriz linear em coordenadas cartesianas, mas pode ser tratada após a multiplicação da matriz de projeção no espaço homogéneo (homogeneização).",
+      "Porque as coordenadas homogéneas permitem a rotação e translação de pontos simultaneamente.",
+      "Porque as coordenadas homogéneas são necessárias apenas para representar pontos no espaço 3D, não no 2D.",
+      "Porque a divisão por Z só é relevante para o cálculo de normais."
+    ],
+    "respostaCorreta": 0
+  },
+  {
+    "id": 190,
+    "enunciado": "Qual o papel principal da Matriz de Projeção Perspetiva (Mp) no pipeline de renderização?",
+    "alternativas": [
+      "Transformar as coordenadas dos vértices do espaço do mundo para o espaço da câmara.",
+      "Transformar o volume de visualização perspetiva num volume ortográfico canónico, essencial para as etapas posteriores do pipeline.",
+      "Mapear as coordenadas projetadas para as coordenadas do ecrã.",
+      "Calcular a contribuição especular da luz."
+    ],
+    "respostaCorreta": 1
+  },
+  {
+    "id": 191,
+    "enunciado": "Após a aplicação da matriz de projeção perspetiva (Mp) a um ponto 3D em coordenadas homogéneas, a coordenada Z resultante (z'/w') tem um significado particular. Qual é esse significado?",
+    "alternativas": [
+      "Representa a distância euclidiana do ponto à câmara.",
+      "Representa a coordenada Y projetada do ponto.",
+      "Representa uma medida de profundidade que preserva a ordem de profundidade e é usada para testes de visibilidade com o z-buffer.",
+      "Representa a coordenada X projetada do ponto."
+    ],
+    "respostaCorreta": 2
+  },
+  {
+    "id": 192,
+    "enunciado": "A Matriz View (Mv), usada para transformar pontos do espaço do mundo para o espaço da câmara, é obtida de uma maneira específica. Como é geralmente calculada a Mv?",
+    "alternativas": [
+      "É calculada como a multiplicação da matriz Model pela matriz Projection.",
+      "É a inversa da matriz que define a transformação do espaço da câmara para o espaço do mundo.",
+      "É uma matriz de translação e rotação predefinida.",
+      "É calculada utilizando as coordenadas baricêntricas dos vértices."
+    ],
+    "respostaCorreta": 3
+  },
+  {
+    "id": 193,
+    "enunciado": "Qual o objetivo da aplicação da cadeia de matrizes M = Mo * Mp * Mv a um ponto 3D em coordenadas do mundo no pipeline de renderização?",
+    "alternativas": [
+      "Transformar o ponto 3D do espaço do mundo para o espaço projetado/do ecrã, resultando em coordenadas homogéneas antes da homogenização final para as coordenadas de pixel.",
+      "Aplicar a iluminação e sombreamento ao ponto.",
+      "Gerar texturas para o ponto.",
+      "Determinar se o ponto está visível ou ocluído."
+    ],
+    "respostaCorreta": 0
+  },
+  {
+    "id": 194,
+    "enunciado": "Na definição formal de um L-System (A, S, P), o que representa o Axioma (S)?",
+    "alternativas": [
+      "O conjunto de todos os símbolos possíveis (o alfabeto).",
+      "Uma palavra inicial não vazia a partir da qual a derivação começa.",
+      "O conjunto de regras que ditam como os símbolos são substituídos.",
+      "A linguagem final gerada pelo sistema."
+    ],
+    "respostaCorreta": 1
+  },
+  {
+    "id": 195,
+    "enunciado": "Como são aplicadas as regras de produção num passo de derivação de um L-System determinístico?",
+    "alternativas": [
+      "Uma única regra é escolhida aleatoriamente e aplicada a um símbolo.",
+      "As regras são aplicadas sequencialmente, uma a uma, do início ao fim da palavra.",
+      "Todas as regras de produção cujos símbolos na 'cabeça' correspondem a símbolos na palavra atual são aplicadas simultaneamente.",
+      "Aplica-se apenas a regra correspondente ao primeiro símbolo da palavra."
+    ],
+    "respostaCorreta": 2
+  },
+  {
+    "id": 196,
+    "enunciado": "Num L-System interpretado por uma 'tartaruga' 2D, qual a diferença entre a interpretação do símbolo 'F' e do símbolo 'f'?",
+    "alternativas": [
+      "F move para a frente desenhando uma linha, enquanto f muda a orientação.",
+      "F guarda o estado da tartaruga, enquanto f restaura o estado.",
+      "F move para a frente sem desenhar uma linha, enquanto f move para a frente desenhando uma linha.",
+      "F move para a frente desenhando uma linha, enquanto f move para a frente sem desenhar uma linha."
+    ],
+    "respostaCorreta": 3
+  },
+  {
+    "id": 197,
+    "enunciado": "Em L-Systems para modelagem 3D com uma 'tartaruga' com orientação baseada em vetores (heading, left, up), quais símbolos são introduzidos no alfabeto para controlar as rotações de pitch e roll?",
+    "alternativas": [
+      "Os símbolos '^', '&', 'barra descendo para direita', '/'.",
+      "Os símbolos '+' e '-'.",
+      "Os símbolos '[' e ']'.",
+      "Os símbolos 'F' e 'f'."
+    ],
+    "respostaCorreta": 0
+  },
+  {
+    "id": 198,
+    "enunciado": "Qual a principal característica que diferencia um L-System estocástico de um L-System determinístico?",
+    "alternativas": [
+      "L-Systems estocásticos geram apenas linhas retas.",
+      "L-Systems estocásticos utilizam alfabetos paramétricos.",
+      "Em L-Systems estocásticos, as regras de produção têm probabilidades ou pesos associados, tornando a derivação não determinística.",
+      "L-Systems estocásticos não suportam ramificações."
+    ],
+    "respostaCorreta": 1
+  },
+  {
+    "id": 199,
+    "enunciado": "No pseudo-código do Whitted Ray Tracing apresentado abaixo, por que a função `raycolor` faz chamadas recursivas a si mesma?\n\n```\nColor raycolor(Ray d){\n  Point p = hit(d);\n  if p == null (no surface was hit)\n    return Color(0,0,0);\n  Color c = shading(p);\n  if p is on a reflective surface{\n    Ray r = reflection(d, p);\n    c = (1-cs)*c + cs*raycolor(r);\n  }else if p is on a refractive surface{\n    Ray r = reflection(d, p);\n    Ray t = refraction(d, p);\n    double re = energy_ratio(d, p);\n    c = (1-cs)*c + cs*(re*raycolor(r)+(1-re)*raycolor(t));\n  }\n  return c;\n}\n```",
+    "alternativas": [
+      "Para calcular a iluminação ambiente.",
+      "Para determinar se um raio atinge uma superfície.",
+      "Para simular o comportamento da luz ao refletir e refratar em múltiplas superfícies (raios secundários recursivos).",
+      "Para projetar pontos 3D para o plano 2D."
+    ],
+    "respostaCorreta": 2
+  },
+  {
+    "id": 200,
+    "enunciado": "Como são geradas 'Soft Shadows' num algoritmo de Ray Tracing, contrastando com 'Hard Shadows'?",
+    "alternativas": [
+      "Aplicando um filtro de desfoque na imagem final.",
+      "Lançando um único raio de sombra para o ponto mais próximo da fonte de luz.",
+      "Utilizando um 'shadow map' de alta resolução.",
+      "Lançando múltiplos raios de sombra de um ponto na superfície em direção a diferentes pontos na área da fonte de luz, e a intensidade da sombra depende da proporção de raios que atingem a luz."
+    ],
+    "respostaCorreta": 3
+  }
+
+
+]
+}
